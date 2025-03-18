@@ -1,5 +1,5 @@
 #ifndef SSTRING_H
-#define SSTRING_h
+#define SSTRING_H
 
 typedef struct string_t
 {

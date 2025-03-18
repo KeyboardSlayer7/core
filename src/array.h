@@ -1,5 +1,5 @@
-#ifndef DYNAMIC_ARRAY_H
-#define DYNAMIC_ARRAY_H
+#ifndef ARRAY_H
+#define ARRAY_H
 
 typedef struct array_t 
 {
@@ -13,4 +13,4 @@ void initArray(Array* array, size_t element_size);
 void append(Array* array, void* element);
 void* get(Array* array, size_t index); 
 
-#endif // DYNAMIC_ARRAY_H
+#endif // ARRAY_H
