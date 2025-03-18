@@ -1,6 +1,13 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
+#include <stdlib.h>
+typedef enum array_errors_t
+{
+    NO_ERROR,
+    MEMORY_ALLOCATION_ERROR
+} ArrayErrors;
+
 typedef struct array_t 
 {
     void *data;
@@ -10,7 +17,7 @@ typedef struct array_t
 } Array;
 
 void initArray(Array* array, size_t element_size);
-void append(Array* array, void* element);
+int append(Array* array, void* element);
 void* get(Array* array, size_t index); 
 
 #endif // ARRAY_H
