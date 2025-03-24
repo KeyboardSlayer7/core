@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 
+typedef void (*Destructor)(void*);
+
 typedef enum array_errors_t
 {
     NO_ERROR,
@@ -15,9 +17,10 @@ typedef struct array_t
     size_t size;
     size_t capacity;
     size_t element_size;
+    Destructor destructor;
 } Array;
 
-void initArray(Array* array, size_t element_size);
+void initArray(Array* array, size_t element_size, Destructor destructor);
 int resize(Array* array, size_t size);
 int append(Array* array, void* element);
 void* get(Array* array, size_t index);

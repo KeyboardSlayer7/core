@@ -4,12 +4,13 @@
 
 #include "array.h"
 
-void initArray(Array* array, size_t element_size)
+void initArray(Array* array, size_t element_size, Destructor destructor)
 {
     array->data = NULL;
     array->capacity = 0;
     array->size = 0;
-    array->element_size = element_size; 
+    array->element_size = element_size;
+    array->destructor = destructor; 
 }
 
 int resize(Array* array, size_t size)
@@ -62,7 +63,9 @@ int append(Array* array, void* element)
         }
     }
 
-    memcpy((uint8_t*)array->data + (array->size * array->element_size), element, array->element_size);
+    void* destination = (void*)((uintptr_t)array->data + (array->size * array->element_size));
+
+    memcpy(destination, element, array->element_size);
     array->size++;
 
     return NO_ERROR;
@@ -75,5 +78,5 @@ void* get(Array* array, size_t index)
         return NULL;
     }
 
-    return (uint8_t*)array->data + (index * array->element_size);
+    return (uintptr_t)array->data + (index * array->element_size);
 }
