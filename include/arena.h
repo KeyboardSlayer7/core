@@ -13,3 +13,5 @@ void initArena(Arena* arena);
 void freeArena(Arena* arena);
 
 void* arenaAlloc(Arena* arena, size_t size);
+
+#endif //ARENA_H
