@@ -8,7 +8,8 @@ typedef struct string_t
     size_t capacity;
 } String;
 
-void initString(String* string, const char* c_string);
+void initString(String* string);
+void set(String* string, const char* c_string);
 void concatenate(String* string, const char* c_string);
 
 #endif // SSTRING_H

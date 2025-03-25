@@ -6,9 +6,7 @@
 
 void toHex(String* string, uint8_t byte)
 {
-    char values[16] = "0123456789ABCDEF";
-
-    initString(string, "");
+    char values[16] = "0123456789ABCDEF"; 
 
     char hex[3];
     hex[2] = '\0';
@@ -16,9 +14,7 @@ void toHex(String* string, uint8_t byte)
     hex[0] = values[(byte >> 4) & 0xF];
     hex[1] = values[byte & 0xF];
 
-    // printf("Hex: %s\n", hex);
-
-    concatenate(string, hex);
+    set(string, hex);
 }
 
 uint8_t fromHex(String* string)

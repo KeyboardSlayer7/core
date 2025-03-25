@@ -5,15 +5,27 @@
 #include "sstring.h"
 #include "array.h"
 
-void initString(String* string, const char* c_string)
+void initString(String* string)
 {
-    string->length = strlen(c_string);
-    string->capacity = string->length + 1;
+    string->length = 0;
+    string->capacity = 0;
+    string->data = NULL;    
+}
 
+void set(String* string, const char* c_string)
+{
+    if (string->data != NULL)
+    {
+        free(string->data);
+    }
+    
+    string->length = strlen(c_string);
+    string->capacity = string->length;
+    
     string->data = malloc(sizeof(char) * (string->length + 1));
     string->data[string->length] = '\0';
 
-    memcpy(string->data, c_string, string->length);    
+    memcpy(string->data, c_string, string->length);
 }
 
 void concatenate(String* string, const char* c_string)
