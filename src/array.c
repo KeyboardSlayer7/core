@@ -48,7 +48,7 @@ int append(Array* array, void* element)
     {
         int ret = NO_ERROR;
 
-        if (array->data = NULL)
+        if (array->data == NULL)
         {
             ret = resize(array, 1);
         }
@@ -63,7 +63,7 @@ int append(Array* array, void* element)
         }
     }
 
-    void* destination = (void*)((uintptr_t)array->data + (array->size * array->element_size));
+    void* destination = (void*)((uintptr_t)(array->data) + (array->size * array->element_size));
 
     memcpy(destination, element, array->element_size);
     array->size++;
@@ -78,5 +78,19 @@ void* get(Array* array, size_t index)
         return NULL;
     }
 
-    return (uintptr_t)array->data + (index * array->element_size);
+    return (uintptr_t)(array->data) + (index * array->element_size);
+}
+
+void freeArray(Array* array)
+{
+    if (array->destructor != NULL)
+    {
+        for (int i = 0; i < array->size; ++i)
+        {
+            void* pointer = (uintptr_t)(array->data) + (i * array->element_size);
+            array->destructor(pointer);
+        }
+    }
+
+    free(array->data);
 }

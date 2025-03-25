@@ -12,9 +12,9 @@ void initArena(Arena* arena)
 void* arenaAlloc(Arena* arena, size_t size)
 {
   void* pointer = arena->current;
-  arena->current += size;
+  arena->current = (uintptr_t)(arena->current) + size;
 
-  return ponter;
+  return pointer;
 }
 
 void freeArena(Arena* arena)

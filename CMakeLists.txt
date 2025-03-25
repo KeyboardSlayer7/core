@@ -5,8 +5,12 @@ set(
     SOURCES
     include/array.h
     include/sstring.h
+    include/arena.h
+    include/hex.h
     src/array.c
     src/sstring.c
+    src/arena.c
+    src/hex.c
 )
 
 option(BUILD_SHARED_LIBS "Build shared library" OFF)

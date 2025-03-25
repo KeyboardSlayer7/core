@@ -24,5 +24,6 @@ void initArray(Array* array, size_t element_size, Destructor destructor);
 int resize(Array* array, size_t size);
 int append(Array* array, void* element);
 void* get(Array* array, size_t index);
+void freeArray(Array* array);
 
 #endif // ARRAY_H
