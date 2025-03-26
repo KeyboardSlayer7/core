@@ -47,3 +47,8 @@ void concatenate(String* string, const char* c_string)
 
     string->data[string->length] = '\0';
 }
+
+void freeString(String* string)
+{
+    free(string->data);
+}

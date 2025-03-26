@@ -11,5 +11,6 @@ typedef struct string_t
 void initString(String* string);
 void set(String* string, const char* c_string);
 void concatenate(String* string, const char* c_string);
+void freeString(String* string);
 
 #endif // SSTRING_H
