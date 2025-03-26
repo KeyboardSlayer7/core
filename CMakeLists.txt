@@ -7,10 +7,12 @@ set(
     include/sstring.h
     include/arena.h
     include/hex.h
+    include/network.h
     src/array.c
     src/sstring.c
     src/arena.c
     src/hex.c
+    src/network.c
 )
 
 option(BUILD_SHARED_LIBS "Build shared library" OFF)
