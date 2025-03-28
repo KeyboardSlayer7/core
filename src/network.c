@@ -1,8 +1,14 @@
+#include <string.h>
+
 #if defined(_WIN32) || defined(_WIN64)
     #include <WinSock2.h>
     #include <WS2tcpip.h>
-#elif
-
+#elif defined(__linux__)
+    #include <sys/types.h>
+    #include <sys/socket.h>
+    #include <netinet/in.h>
+    #include <arpa/inet.h>
+    #include <unistd.h>
 #endif
 
 #include "network.h"

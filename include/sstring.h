@@ -10,6 +10,7 @@ typedef struct string_t
 
 void initString(String* string);
 void set(String* string, const char* c_string);
+int resizeString(String* string, size_t size);
 void concatenate(String* string, const char* c_string);
 void freeString(String* string);
 

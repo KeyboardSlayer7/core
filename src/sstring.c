@@ -28,6 +28,35 @@ void set(String* string, const char* c_string)
     memcpy(string->data, c_string, string->length);
 }
 
+int resizeString(String* string, size_t size)
+{
+    if (string->data == NULL)
+    {
+        string->capacity = size;
+        string->data = malloc(string->capacity * sizeof(char));
+
+        if (string->data == NULL)
+        {
+            return MEMORY_ALLOCATION_ERROR;
+        }
+    }
+    else
+    {
+        string->capacity = size;
+        
+        void* temp = realloc(string->data, string->capacity * sizeof(char));
+
+        if (temp == NULL)
+        {
+            return MEMORY_ALLOCATION_ERROR;
+        }
+
+        string->data = temp;
+    }
+
+    return NO_ERROR;
+}
+
 void concatenate(String* string, const char* c_string)
 {
     int length = strlen(c_string);
